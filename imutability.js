@@ -58,3 +58,4 @@ console.log(a);
 // NOTE filter, map, reduce is returning an brand new object
 
 npm install -g create-react-app
+create-react-app redux-intro
