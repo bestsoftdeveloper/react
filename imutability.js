@@ -57,5 +57,6 @@ console.log(a);
 
 // NOTE filter, map, reduce is returning an brand new object
 
+https://daveceddia.com/how-does-redux-work/
 npm install -g create-react-app
 create-react-app redux-intro
