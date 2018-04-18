@@ -8,7 +8,7 @@
 // registerServiceWorker();
 
 
-import { combineReducers, createStore } from "redux";
+import { applyMiddleware, combineReducers, createStore } from "redux";
 
 const userReducer = (state={
 		user:{
@@ -40,7 +40,14 @@ const reducers = combineReducers(
 	tweet:tweetsReducer
 });
 
-const store = createStore(reducers);
+const logger = (store) => (next) => (action) =>{
+	console.log("action fired", action);
+	next(action);
+};
+
+const middleware = applyMiddleware(logger);
+
+const store = createStore(reducers, middleware);
 
 store.subscribe(()=>{
 	console.log("store changed ", store.getState());
