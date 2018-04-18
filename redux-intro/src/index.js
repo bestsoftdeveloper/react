@@ -9,6 +9,9 @@
 
 
 import { applyMiddleware, combineReducers, createStore } from "redux";
+import { logger } from "redux-logger"
+import axios from "axios";
+import thunk from "redux-thunk";
 
 const userReducer = (state={
 		user:{
@@ -40,12 +43,22 @@ const reducers = combineReducers(
 	tweet:tweetsReducer
 });
 
-const logger = (store) => (next) => (action) =>{
+const loggerCustom = (store) => (next) => (action) =>{
 	console.log("action fired", action);
 	next(action);
 };
 
-const middleware = applyMiddleware(logger);
+const error = (store) => (next) => (action) =>{
+	console.log("action fired", action);
+	try{
+		next(action);
+	}
+	catch(e){
+		console.log("Erooooooooor!");
+	}
+};
+
+const middleware = applyMiddleware(logger, error);
 
 const store = createStore(reducers, middleware);
 
@@ -57,3 +70,10 @@ store.dispatch({type:"INC", payload:1});
 store.dispatch({type:"INC", payload:1});
 store.dispatch({type:"INC", payload:1});
 store.dispatch({type:"INC", payload:1});
+
+store.dispatch((dispatch)=>
+{
+	dispatch({type:"FOO"});
+	dispatch({type:"BAR"});
+});
+
