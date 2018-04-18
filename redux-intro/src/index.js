@@ -12,6 +12,7 @@ import { applyMiddleware, combineReducers, createStore } from "redux";
 import { logger } from "redux-logger"
 import axios from "axios";
 import thunk from "redux-thunk";
+import promise from "redux-promise-middleware";
 
 const userReducer = (state={
 		user:{
@@ -58,7 +59,7 @@ const error = (store) => (next) => (action) =>{
 	}
 };
 
-const middleware = applyMiddleware(thunk, logger, error);
+const middleware = applyMiddleware(promise(), thunk, logger, error);
 
 const store = createStore(reducers, middleware);
 
@@ -83,6 +84,13 @@ store.dispatch((dispatch)=>
 		console.log("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
 		dispatch({type:"GET_USERS_ERROR", payload: err});
 	});
+	
+});
+
+store.dispatch(
+{
+	type:"GET_USERS",
+	payload: axios.get("http://rest.learncode.academy/api/wstern/users")
 	
 });
 
