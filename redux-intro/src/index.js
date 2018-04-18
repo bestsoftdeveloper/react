@@ -16,7 +16,13 @@ const reducer = function(state, action){
 	return state;
 };
 
-const store = createStore(reducer,0);
+const store = createStore(reducer,
+	{
+		user:{
+			name:"John",
+			tweets:[]
+		}
+	});
 
 store.subscribe(()=>{
 	console.log("store changed ", store.getState());
