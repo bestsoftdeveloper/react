@@ -54,11 +54,11 @@ const error = (store) => (next) => (action) =>{
 		next(action);
 	}
 	catch(e){
-		console.log("Erooooooooor!");
+		console.log("Erooooooooor!",e);
 	}
 };
 
-const middleware = applyMiddleware(logger, error);
+const middleware = applyMiddleware(thunk, logger, error);
 
 const store = createStore(reducers, middleware);
 
@@ -66,14 +66,23 @@ store.subscribe(()=>{
 	console.log("store changed ", store.getState());
 });
 
-store.dispatch({type:"INC", payload:1});
-store.dispatch({type:"INC", payload:1});
-store.dispatch({type:"INC", payload:1});
-store.dispatch({type:"INC", payload:1});
+// store.dispatch({type:"INC", payload:1});
+// store.dispatch({type:"INC", payload:1});
+// store.dispatch({type:"INC", payload:1});
+// store.dispatch({type:"INC", payload:1});
 
 store.dispatch((dispatch)=>
 {
-	dispatch({type:"FOO"});
-	dispatch({type:"BAR"});
+	dispatch({type:"GET_USERS"});
+	axios.get("http://rest.learncode.academy/api/wstern/users")
+	.then((response)=>{
+		console.log(response);
+		dispatch({type:"USERS", payload: response.data});
+	})
+	.catch((err)=>{
+		console.log("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+		dispatch({type:"GET_USERS_ERROR", payload: err});
+	});
+	
 });
 
