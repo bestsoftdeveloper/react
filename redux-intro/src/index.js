@@ -12,10 +12,11 @@ import CounterOne from './components/counterOne';
 const store = createStore(counterReducer);
 
 const App = () => (
- // <Provider store={store}>
- //    <CounterContainer/>
- //   </Provider>
-    <CounterOne></CounterOne>
+  <Provider store={store}>
+    <CounterContainer/>
+   </Provider>
+
+ // <CounterOne></CounterOne>
 );
 
 render(<App />, document.getElementById('root'));

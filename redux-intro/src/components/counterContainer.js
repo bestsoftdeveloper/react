@@ -3,11 +3,15 @@ import { connect } from 'react-redux';
 import Counter from './counter';
 
 const mapStateToProps = state => ({
-    data: state.count
+    count: state.count,
+    a: function () {
+        return 'xxx'
+    }
 });
 
 const mapDispatchToProps = dispatch => ({
-    // resetIsButtonPressed: () => dispatch(AccessMethodsActions.physicalButtonPressed(false, false))
+    inc: () => dispatch({type: 'INCREMENT'}),
+    dec: () => dispatch({type: 'DECREMENT'})
 });
 
 const CounterContainer = connect(
