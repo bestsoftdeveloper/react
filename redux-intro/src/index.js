@@ -1,7 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import { createStore } from 'redux';
+import { applyMiddleware, combineReducers, createStore } from "redux";
+import thunk from "redux-thunk";
 import { Provider } from 'react-redux';
 
 import CounterContainer from './components/counterContainer';
@@ -11,7 +12,14 @@ import counterReducer  from './components/counterReducer';
 // https://daveceddia.com/how-does-redux-work/
 import CounterOne from './components/counterOne';
 
-const store = createStore(counterReducer);
+const logger = (store) => (next) => (action) =>{
+	console.log("action fired", action);
+	next(action);
+};
+
+const middleware = applyMiddleware(thunk, logger);
+
+const store = createStore(counterReducer, middleware);
 
 const App = () => (
   <Provider store={store}>

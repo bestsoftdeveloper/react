@@ -1,10 +1,12 @@
 import React from 'react';
 
 import CounterContainer from './counterContainer';
+import Users from './users';
+import UsersContainer from './usersContainer';
 
 class HomePage extends React.Component {
     constructor(props) {
-        debugger;
+        // debugger;
         super(props);
         this.state = {
             test:'hi'
@@ -21,7 +23,11 @@ class HomePage extends React.Component {
         return (
             <div>
                 <CounterContainer  customProp={this.state} changeVolume={this.setVolumeValue}></CounterContainer>
-                <CounterContainer></CounterContainer>
+                {/*<CounterContainer></CounterContainer>*/}
+
+                {/*<Users></Users>*/}
+                <div>Users Container</div>
+                <UsersContainer></UsersContainer>
             </div>
         )
     }
