@@ -9,6 +9,11 @@ class Users extends React.Component {
         debugger;
         this.getUsers = this.getUsers.bind(this);
     }
+
+    componentWillReceiveProps(nextProps) {
+        console.log(nextProps);
+    }
+
     state = {count: 0}
 
     getUsers = () => {

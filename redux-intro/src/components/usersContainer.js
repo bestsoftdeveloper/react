@@ -6,7 +6,8 @@ const mapStateToProps = state => ({
     ffffffffffff: 88,
     a: function () {
         return 'xxx'
-    }
+    },
+    data: state.user
 });
 
 const mapDispatchToProps = dispatch => ({
