@@ -8,7 +8,7 @@ function userReducer(state = initialState, action) {
       case 'USERS_RECEIVED':
       return {
         ...state,
-        users: action.users
+        users: action.data
       };
 
     default:

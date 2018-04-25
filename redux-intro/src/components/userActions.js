@@ -15,7 +15,9 @@ export  class UserActions {
     axios.get("http://rest.learncode.academy/api/wstern/users")
         .then((response)=>{
           console.log(response);
-          dispatch({type:"USERS_RECEIVED", action: response.data});
+            const data = response.data;
+            data.push({id:1, name :'John'});
+          dispatch({type:"USERS_RECEIVED", data: response.data});
         })
         .catch((err)=>{
           console.log("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");

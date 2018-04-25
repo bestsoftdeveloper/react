@@ -9,6 +9,9 @@ import CounterContainer from './components/counterContainer';
 import HomePageContainer from './components/homePageContainer';
 
 import counterReducer  from './components/counterReducer';
+import userReducer  from './components/userReducer';
+
+
 // https://daveceddia.com/how-does-redux-work/
 import CounterOne from './components/counterOne';
 
@@ -19,7 +22,12 @@ const logger = (store) => (next) => (action) =>{
 
 const middleware = applyMiddleware(thunk, logger);
 
-const store = createStore(counterReducer, middleware);
+const reducecers = combineReducers({
+    user: userReducer,
+    counter: counterReducer
+
+})
+const store = createStore(reducecers, middleware);
 
 const App = () => (
   <Provider store={store}>
