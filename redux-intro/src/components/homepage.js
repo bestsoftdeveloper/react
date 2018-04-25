@@ -6,21 +6,21 @@ class HomePage extends React.Component {
     constructor(props) {
         debugger;
         super(props);
-
+        this.state = {
+            test:'hi'
+        };
+        this.setVolumeValue = this.setVolumeValue.bind(this);
     }
 
-    increment = () => {
-        this.props.inc();
-    }
-
-    decrement = () => {
-        this.props.dec();
+    setVolumeValue(val) {
+        debugger;
+        console.log(val);
     }
 
     render() {
         return (
             <div>
-                <CounterContainer></CounterContainer>
+                <CounterContainer  customProp={this.state} changeVolume={this.setVolumeValue}></CounterContainer>
                 <CounterContainer></CounterContainer>
             </div>
         )

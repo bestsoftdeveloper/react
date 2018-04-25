@@ -12,6 +12,9 @@ class Counter extends React.Component {
 
     decrement = () => {
         this.props.dec();
+        if(this.props.changeVolume) {
+            this.props.changeVolume(this.props.count);
+        }
     }
 
     render() {
