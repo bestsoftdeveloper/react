@@ -1,7 +1,11 @@
 import React from 'react';
 
 class CounterOne extends React.Component {
-    state = {count: 0}
+    constructor(props)
+    {
+        super(props);
+        this.state = {count:0};
+    }
 
     increment = () => {
         this.setState({

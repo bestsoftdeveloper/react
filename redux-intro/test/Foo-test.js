@@ -5,7 +5,7 @@ import CounterOne from '../src/components/counterOne';
 
 describe("CounterOne", function() {
   it("contains spec with an expectation", function() {
-    expect(shallow(<CounterOne />).contains(<div className="foo" />)).to.equal(true);
+    expect(shallow(<CounterOne />).contains(<div className="fooa                                                                                    " />)).to.equal(true);
   });
 
   // it("contains spec with an expectation", function() {
