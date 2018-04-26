@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import  UserActions   from './userActions';
+import UserItem from './userItem';
 
 class Users extends React.Component {
 
@@ -37,7 +38,13 @@ class Users extends React.Component {
                 {this.props.users &&
                     <ul>
                         {
-                            this.props.users.map(this.createItem)
+
+                            this.props.users.map((item, index) => (
+                                <UserItem
+                                    key={index}
+                                    user={item}
+                                />
+                            ))
                         }
                     </ul>
                 }
