@@ -8,6 +8,7 @@ import { Provider } from 'react-redux';
 import CounterContainer from './components/counterContainer';
 import HomePageContainer from './components/homePageContainer';
 
+
 import counterReducer  from './components/counterReducer';
 import userReducer  from './components/userReducer';
 
@@ -31,6 +32,7 @@ const store = createStore(reducers, middleware);
 
 const App = () => (
   <Provider store={store}>
+
     <HomePageContainer/>
    </Provider>
 

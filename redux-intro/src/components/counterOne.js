@@ -18,7 +18,7 @@ class CounterOne extends React.Component {
     render() {
         return (
             <div>
-                <h2>Counter</h2>
+                <h2>Counter ONE</h2>
                 <div>
                     <button onClick={this.decrement}>-</button>
                     <span>{this.state.count}</span>

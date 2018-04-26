@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import  UserActions   from './userActions';
 import UserItem from './userItem';
+// import { Rx } from "rxjs";
+import * as Rx from 'rxjs/Rx';
 
 class Users extends React.Component {
 
@@ -9,6 +11,11 @@ class Users extends React.Component {
         super(props);
         debugger;
         this.getUsers = this.getUsers.bind(this);
+        this.setUsers = this.setUsers.bind(this);
+
+        this.getUsersObservable = this.getUsersObservable.bind(this);
+
+
     }
 
     componentWillReceiveProps(nextProps) {
@@ -22,6 +29,14 @@ class Users extends React.Component {
     }
 
     state = {count: 0}
+
+    setUsers(x) {
+        this.setState(
+            {
+                ...this.state,
+                users: x.data || [{id:1, text:'def'}]
+            });
+    }
 
     getUsers = () => {
         // this.userActions.getTestUsers();
@@ -47,6 +62,18 @@ class Users extends React.Component {
             });
     }
 
+    getUsersObservable = () => {
+        var result = Rx.Observable.fromPromise(UserActions.getUsersPromise());
+        result.subscribe(
+            x => {
+                console.log(x);
+               this.setUsers(x);
+            } ,
+            e => console.error(e));
+
+    }
+
+
     createItem = (item) => {
         return <li key={item.id}>{item.text}</li>;
     };
@@ -59,6 +86,7 @@ class Users extends React.Component {
                 <div>
                     <button onClick={this.getUsers}>get Users</button>
                     <button onClick={this.getUsersPromise}>get Users getUsersPromise</button>
+                    <button onClick={this.getUsersObservable.bind(this)}>Observables</button>
                 </div>
 
                 {list &&
