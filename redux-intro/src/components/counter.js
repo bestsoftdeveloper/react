@@ -4,9 +4,18 @@ class Counter extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            count: props.count
+            count: props.counter.count
         }
         this.increase = this.increase.bind(this);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        console.log(nextProps);
+
+        const newState = { ...this.state, count:  nextProps.counter.count};
+
+        this.setState(newState);
+
     }
 
     increment = () => {
@@ -28,18 +37,19 @@ class Counter extends React.Component {
     }
 
     render() {
+        const { count }= this.state;
         return (
             <div>
-                {this.props.count % 2 === 0 &&
-                    <h2>Counter</h2>
-                }
+                <h2>Counter</h2>
+                {/*{count % 2 === 0 &&*/}
+                    {/*<h2>Counter</h2>*/}
+                {/*}*/}
                 <div>
                     <button onClick={this.decrement}>-</button>
-                    <span>{this.props.count}</span>
+                    <span>{count}</span>
                     <button onClick={this.increment}>+</button>
 
                     <button onClick={this.increase}>increase</button>
-                    <span>{this.state.count}</span>
 
                 </div>
             </div>

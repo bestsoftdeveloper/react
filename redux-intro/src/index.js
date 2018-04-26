@@ -22,12 +22,12 @@ const logger = (store) => (next) => (action) =>{
 
 const middleware = applyMiddleware(thunk, logger);
 
-const reducecers = combineReducers({
+const reducers = combineReducers({
     user: userReducer,
     counter: counterReducer
 
 })
-const store = createStore(reducecers, middleware);
+const store = createStore(reducers, middleware);
 
 const App = () => (
   <Provider store={store}>

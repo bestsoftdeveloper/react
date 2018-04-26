@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Counter from './counter';
 
 const mapStateToProps = state => ({
-    count: state.count,
+    counter: state.counter,
     a: function () {
         return 'xxx'
     }
