@@ -22,6 +22,10 @@ class Users extends React.Component {
         this.props.getUsersFromContainer();
     }
 
+    createItem = (item) => {
+        return <li key={item.id}>{item.text}</li>;
+    };
+
     render() {
         return (
             <div>
@@ -29,7 +33,17 @@ class Users extends React.Component {
                 <div>
                     <button onClick={this.getUsers}>get Users</button>
                 </div>
+
+                {this.props.users &&
+                    <ul>
+                        {
+                            this.props.users.map(this.createItem)
+                        }
+                    </ul>
+                }
             </div>
+
+
         )
     }
 }

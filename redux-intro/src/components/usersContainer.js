@@ -7,7 +7,7 @@ const mapStateToProps = state => ({
     a: function () {
         return 'xxx'
     },
-    data: state.user
+    users: state.user.users
 });
 
 const mapDispatchToProps = dispatch => ({

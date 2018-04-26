@@ -16,7 +16,7 @@ export  class UserActions {
         .then((response)=>{
           console.log(response);
             const data = response.data;
-            data.push({id:1, name :'John'});
+            data.push({id:1, text :'John'});
           dispatch({type:"USERS_RECEIVED", data: response.data});
         })
         .catch((err)=>{
