@@ -9,11 +9,11 @@ class Users extends React.Component {
 
     constructor(props) {
         super(props);
-        debugger;
-        this.getUsers = this.getUsers.bind(this);
-        this.setUsers = this.setUsers.bind(this);
+        // debugger;
+        // this.getUsers = this.getUsers.bind(this);
+        // this.setUsers = this.setUsers.bind(this);
 
-        this.getUsersObservable = this.getUsersObservable.bind(this);
+        // this.getUsersObservable = this.getUsersObservable.bind(this);
 
 
     }
@@ -34,7 +34,7 @@ class Users extends React.Component {
         this.setState(
             {
                 ...this.state,
-                users: x.data || [{id:1, text:'def'}]
+                users: [{id:1, text:'def'}]
             });
     }
 
@@ -71,6 +71,15 @@ class Users extends React.Component {
             } ,
             e => console.error(e));
 
+
+        // result.subscribe = (x) =>(
+        //     x => {
+        //         console.log(x);
+        //         this.setUsers(x);
+        //     } ,
+        //         e => console.error(e));
+
+
     }
 
 
@@ -86,7 +95,7 @@ class Users extends React.Component {
                 <div>
                     <button onClick={this.getUsers}>get Users</button>
                     <button onClick={this.getUsersPromise}>get Users getUsersPromise</button>
-                    <button onClick={this.getUsersObservable.bind(this)}>Observables</button>
+                    <button onClick={this.getUsersObservable}>Observables</button>
                 </div>
 
                 {list &&
