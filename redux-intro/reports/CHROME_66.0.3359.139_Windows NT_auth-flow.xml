@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="1"
+            tests="4">
+
+  <testsuite name="auth-flow"
+    errors="0" failures="1" hostname="" id="" package="auth-flow" skipped="3"
+    tests="4" time="5.200" timestamp="Fri, 27 Apr 2018 09:17:24 GMT">
+  
+    <testcase name="get to login page" classname="auth-flow" time="5.200" assertions="1">  <failure message="Timed out while waiting for element &lt;.navbar&gt; to be present for 1000 milliseconds.">    at Object.get to login page (c:\Claudiu\Work\_BestdevCursuri\suport_curs\react\bestdev\react\redux-intro\tests\auth-flow.js:5:8)
+    at _combinedTickCallback (internal/process/next_tick.js:73:7)</failure>
+
+    
+    </testcase>
+  
+
+  
+
+  
+    
+    <testcase
+      name="logging in" classname="auth-flow">
+      <skipped />
+    </testcase>
+    
+    <testcase
+      name="logging out" classname="auth-flow">
+      <skipped />
+    </testcase>
+    
+    <testcase
+      name="close" classname="auth-flow">
+      <skipped />
+    </testcase>
+    
+  
+  </testsuite>
+</testsuites>
