@@ -50,7 +50,7 @@ class Counter extends React.Component {
                     <button onClick={this.increment}>+</button>
 
                     <button onClick={this.increase}>increase</button>
-
+                    <p>{this.props.counter.text}</p>
                 </div>
             </div>
         )

@@ -25,7 +25,7 @@ const middleware = applyMiddleware(thunk, logger);
 
 const reducers = combineReducers({
     user: userReducer,
-    counter: counterReducer
+    counterRed: counterReducer
 
 })
 const store = createStore(reducers, middleware);

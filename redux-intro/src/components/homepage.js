@@ -24,8 +24,14 @@ class HomePage extends React.Component {
         return (
             <div>
                 <CounterOne></CounterOne>
-                <CounterContainer  customProp={this.state} changeVolume={this.setVolumeValue}></CounterContainer>
-                {/*<CounterContainer></CounterContainer>*/}
+
+                <CounterContainer
+                    customProp={this.state}
+                    changeVolume={this.setVolumeValue}>
+                </CounterContainer>
+
+
+        {/*<CounterContainer></CounterContainer>*/}
 
                 {/*<Users></Users>*/}
                 <div>Users Container</div>

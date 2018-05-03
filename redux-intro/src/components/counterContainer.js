@@ -2,8 +2,8 @@ import { connect } from 'react-redux';
 
 import Counter from './counter';
 
-const mapStateToProps = state => ({
-    counter: state.counter,
+const mapStateToProps1 = state => ({
+    counter: state.counterRed,
     a: function () {
         return 'xxx'
     }
@@ -15,7 +15,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const CounterContainer = connect(
-    mapStateToProps,
+    mapStateToProps1,
     mapDispatchToProps
 )(Counter);
 
