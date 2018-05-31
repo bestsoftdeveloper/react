@@ -2,8 +2,8 @@ import { connect } from 'react-redux';
 
 import Counter from './counter';
 
-const mapStateToProps1 = (store, ownProps) => ({
-    counter: store.counterRed,
+const mapStateToProps1 = state => ({
+    counter: state.counterRed,
     a: function () {
         return 'xxx'
     }

@@ -5,9 +5,9 @@
 
   <testsuite name="auth-flow"
     errors="0" failures="1" hostname="" id="" package="auth-flow" skipped="3"
-    tests="4" time="5.200" timestamp="Fri, 27 Apr 2018 09:17:24 GMT">
+    tests="4" time="4.285" timestamp="Thu, 17 May 2018 17:59:22 GMT">
   
-    <testcase name="get to login page" classname="auth-flow" time="5.200" assertions="1">  <failure message="Timed out while waiting for element &lt;.navbar&gt; to be present for 1000 milliseconds.">    at Object.get to login page (c:\Claudiu\Work\_BestdevCursuri\suport_curs\react\bestdev\react\redux-intro\tests\auth-flow.js:5:8)
+    <testcase name="get to login page" classname="auth-flow" time="4.285" assertions="1">  <failure message="Timed out while waiting for element &lt;.navbar&gt; to be present for 1000 milliseconds.">    at Object.get to login page (c:\Claudiu\Work\_BestdevCursuri\suport_curs\react\bestdev\react\redux-intro\tests\auth-flow.js:5:8)
     at _combinedTickCallback (internal/process/next_tick.js:73:7)</failure>
 
     

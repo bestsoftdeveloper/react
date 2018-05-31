@@ -11,7 +11,8 @@ export  class UserActions {
   {
     return [{a:1}];
   }
-  getUsers = () => async (dispatch, getState) => {
+
+  getUsers = (obj,mm) => async (dispatch, getState) => {
     axios.get("http://rest.learncode.academy/api/wstern/users")
         .then((response)=>{
           console.log(response);
