@@ -1,96 +1,42 @@
-// import React from 'react';
-// import ReactDOM from 'react-dom';
-// import './index.css';
-// import App from './App';
-// import registerServiceWorker from './registerServiceWorker';
-
-// ReactDOM.render(<App />, document.getElementById('root'));
-// registerServiceWorker();
-
+import React from 'react';
+import { render } from 'react-dom';
 
 import { applyMiddleware, combineReducers, createStore } from "redux";
-import { logger } from "redux-logger"
-import axios from "axios";
 import thunk from "redux-thunk";
-import promise from "redux-promise-middleware";
+import { Provider } from 'react-redux';
 
-const userReducer = (state={
-		user:{
-			name:"John",
-			age:0
-		}
-	}, action) =>{
-	if(action.type === "CHANGE_NAME"){
-		state = {...state, name: action.payload}
-	}
-	if(action.type === "CHANGE_AGE"){
-		state = {...state, age: action.payload}
-	}
-	return state;
-};
+import CounterContainer from './components/counterContainer';
+import HomePageContainer from './components/homePageContainer';
 
-const tweetsReducer = (state={
-		tweets:[]
-	}, action) =>{
-	if(action.type === "INC"){
-		return state+1;
-	}
-	return state;
-};
 
-const reducers = combineReducers(
-{
-	user:userReducer,
-	tweet:tweetsReducer
-});
+import counterReducer  from './components/counterReducer';
+import userReducer  from './components/userReducer';
 
-const loggerCustom = (store) => (next) => (action) =>{
+
+// https://daveceddia.com/how-does-redux-work/
+import CounterOne from './components/counterOne';
+
+const logger = (store) => (next) => (action) =>{
 	console.log("action fired", action);
 	next(action);
 };
 
-const error = (store) => (next) => (action) =>{
-	console.log("action fired", action);
-	try{
-		next(action);
-	}
-	catch(e){
-		console.log("Erooooooooor!",e);
-	}
-};
+const middleware = applyMiddleware(thunk, logger);
 
-const middleware = applyMiddleware(promise(), thunk, logger, error);
+const reducers = combineReducers({
+    user: userReducer,
+    counterRed: counterReducer
 
+})
 const store = createStore(reducers, middleware);
 
-store.subscribe(()=>{
-	console.log("store changed ", store.getState());
-});
+const App = () => (
+  <Provider store={store}>
 
-// store.dispatch({type:"INC", payload:1});
-// store.dispatch({type:"INC", payload:1});
-// store.dispatch({type:"INC", payload:1});
-// store.dispatch({type:"INC", payload:1});
+    <HomePageContainer/>
+   </Provider>
 
-store.dispatch((dispatch)=>
-{
-	dispatch({type:"GET_USERS"});
-	axios.get("http://rest.learncode.academy/api/wstern/users")
-	.then((response)=>{
-		console.log(response);
-		dispatch({type:"USERS", payload: response.data});
-	})
-	.catch((err)=>{
-		console.log("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
-		dispatch({type:"GET_USERS_ERROR", payload: err});
-	});
-	
-});
+ // <CounterOne></CounterOne>
+);
 
-store.dispatch(
-{
-	type:"GET_USERS",
-	payload: axios.get("http://rest.learncode.academy/api/wstern/users")
-	
-});
-
+render(<App />, document.getElementById('root'));
